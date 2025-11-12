@@ -141,7 +141,7 @@
       <input type="email" id="email" name="email" placeholder="Enter your Gmail address" required>
 
       <label for="sahaja">Practicing Sahaja Yoga Since:</label>
-      <input type="text" id="sahaja" name="sahaja" placeholder="Enter year or duration" required>
+      <input type="text" id="sahaja" name="sahaja" placeholder="Enter year for Eg 2016" required>
 
       <label for="boarding">Select Boarding Point:</label>
       <select id="boarding" name="boarding" required>
@@ -162,7 +162,11 @@
       </select>
 
       <h3 style="margin-top:25px; color:#CA6F1E;">💳 Payment Information</h3>
-      <label for="upiRef">UPI Transaction ID:</label>
+      
+    <h4><b>Pay For Confirm your seats</b></h4>
+     <hr><button type="button" onclick="generatePaymentLink()">Click Here For Payment</button>
+      <a id="upiLink" target="_blank"></a></hr>
+<hr><label for="upiRef">UPI Transaction ID:</label></hr>
       <input type="text" id="upiRef" name="upiRef" placeholder="Enter UPI reference ID" required>
 
       <label for="paymentDate">Date of Payment:</label>
@@ -170,10 +174,6 @@
 
       <label for="amountPaid">Amount Paid (₹):</label>
       <input type="number" id="amountPaid" name="amountPaid" placeholder="Enter amount" min="1" required>
-
-      <button type="button" onclick="generatePaymentLink()">Proceed to Payment</button>
-      <a id="upiLink" target="_blank"></a>
-
       <div class="upload-section">
         <h3 style="color:#CA6F1E;">📸 Upload Payment Screenshot (Proof)</h3>
         <label for="paymentProof">Upload Screenshot:</label>
@@ -209,7 +209,7 @@
         section.innerHTML = `
           <h4 style="color:#689f38;">Passenger ${i}</h4>
           <label>Name:</label>
-          <input type="text" name="name${i}" placeholder="Enter name of passenger ${i}" required>
+          <input type="text" name="name${i}" placeholder=" Name of Passenger For Eg(Vikas Bhor) ${i}" required>
           <label>Age:</label>
           <input type="number" name="age${i}" placeholder="Enter age" min="1" max="100" required>
           <label>Gender:</label>
@@ -255,4 +255,4 @@
   </script>
 
 </body>
-</html>
+  </html>
