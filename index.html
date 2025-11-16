@@ -111,8 +111,7 @@
     .upload-section {    
       margin-top: 25px;    
       padding: 15px;    
-            <button type="button" onclick="generatePaymentLink()">Proceed to Payment</button>    
-      <a id="upiLink" target="_blank"></a>    : #fffde7;    
+      background: #fffde7;    
       border: 1px solid #fff59d;    
       border-radius: 8px;    
     }    
@@ -130,6 +129,7 @@
     <h2>Ganpatipule Seminar 2025 Bus Booking Form</h2>    
     
     <form id="bookingForm">    
+
       <label for="numSeats">Number of Seats Booking:</label>    
       <input type="number" id="numSeats" min="1" max="4" placeholder="Enter number of seats (1–4)" oninput="validateSeats()" required>    
     
@@ -147,26 +147,29 @@
       <label for="boarding">Select Boarding Point:</label>    
       <select id="boarding" required>    
         <option value="">--Select Boarding Point--</option>    
-        <option>National Park Borivali East [Reporting time(9:00 PM Sharp)]</option>    
-        <option>Mahindra & Mahindra Kandivali East [Reporting time(9:05 PM Sharp)]</option>    
-        <option>Omkar Tower Malad East [Reporting time(9:10 PM Sharp)]</option>    
-        <option>Oberoi Mall Goregaon East [Reporting time(9:15 PM Sharp)]</option>    
-        <option>JVLR Starting Point Jogeshwari East [Reporting time(9:20 PM Sharp)]</option>    
-        <option>IIT Powai [Reporting time(9:30 PM Sharp)]</option>    
-        <option>Tagore Nagar Bus Stop Vikhroli [Reporting time(9:45 PM Sharp)]</option>    
-        <option>Mankhurd [Reporting time(10:10 PM Sharp)]</option>    
-        <option>Vashi (Sanpada) [Reporting time(10:15 PM Sharp)]</option>    
-        <option>Nerul LP [Reporting time(10:20 PM Sharp)]</option>    
-        <option>Kokan Bhawan CBD [Reporting time(10:25 PM Sharp)]</option>    
-        <option>Kharghar [Reporting time(10:30 PM Sharp)]</option>    
-        <option>MC Donalds Kalamboli (Panvel) [Reporting time(10:40 PM Sharp)]</option>    
+        <option>National Park Borivali East [9:00 PM]</option>    
+        <option>Mahindra & Mahindra Kandivali East [9:05 PM]</option>    
+        <option>Omkar Tower Malad East [9:10 PM]</option>    
+        <option>Oberoi Mall Goregaon East [9:15 PM]</option>    
+        <option>JVLR Jogeshwari East [9:20 PM]</option>    
+        <option>IIT Powai [9:30 PM]</option>    
+        <option>Tagore Nagar Vikhroli [9:45 PM]</option>    
+        <option>Mankhurd [10:10 PM]</option>    
+        <option>Vashi (Sanpada) [10:15 PM]</option>    
+        <option>Nerul LP [10:20 PM]</option>    
+        <option>Kokan Bhawan CBD [10:25 PM]</option>    
+        <option>Kharghar [10:30 PM]</option>    
+        <option>Kalamboli McDonalds [10:40 PM]</option>    
       </select>    
-    
+
       <h3 style="margin-top:25px; color:#CA6F1E;">💳 Payment Information</h3>  
-     <hr><h4><b>Pay For Confirm Your Seats</b></h4></hr>
-         <hr> <button type="button" onclick="generatePaymentLink()">Proceed to Payment</button>  </hr>  
+      <hr> <h4><b>Pay For Confirm Your Seats</b></h4> </hr>
+
+      <button type="button" onclick="generatePaymentLink()">Proceed to Payment</button>  
       <a id="upiLink" target="_blank"></a>
+
       <hr><h4>Fill This Details After Payment</h4></hr>
+
       <label for="upiRef">UPI Transaction ID:</label>    
       <input type="text" id="upiRef" placeholder="Enter UPI reference ID" required>    
     
@@ -176,8 +179,6 @@
       <label for="amountPaid">Amount Paid (₹):</label>    
       <input type="number" id="amountPaid" placeholder="Enter amount" min="1" required>    
     
-
-
       <div class="upload-section">    
         <h3 style="color:#CA6F1E;">📸 Upload Payment Screenshot (Proof)</h3>    
         <label for="paymentProof">Upload Screenshot:</label>    
@@ -194,6 +195,7 @@
   </footer>    
     
   <script>    
+
     function validateSeats() {    
       const numSeats = parseInt(document.getElementById('numSeats').value);    
       if (numSeats < 1 || numSeats > 4) {    
@@ -230,6 +232,7 @@
       }    
     }    
     
+    // ✅ FIXED PAYMENT FUNCTION WITH VALID UPI ID SUPPORT
     function generatePaymentLink() {    
       const seats = parseInt(document.getElementById("numSeats").value) || 0;    
       const amountPerSeat = 2200;    
@@ -241,15 +244,18 @@
       }    
     
       if (total > 0) {    
-        // Use your UPI mobile number for payment  
-        const mobileNumber = "9594696790";    
-        const upiLink = `upi://pay?pa=${mobileNumber}@upi&pn=Vikas%20Bhor&am=${total}&cu=INR&tn=Bus%20Booking`;    
+
+        // ⚠️ REPLACE THIS WITH YOUR VALID UPI ID (example: 9594696790@oksbi)
+        const upiID = "9594696790@oksbi";    
+
+        const upiLink = `upi://pay?pa=${upiID}&pn=Vikas%20Bhor&am=${total}&cu=INR&tn=Bus%20Booking`;    
+
         const link = document.getElementById("upiLink");    
         link.href = upiLink;    
-        link.textContent = `💰 Pay ₹${total} via Google Pay / mobile Number`;    
+        link.textContent = `💰 Pay ₹${total} via Google Pay / UPI`;    
       }    
     }    
+
   </script>    
-    
 </body>    
-        </html>
+  </html>
